@@ -1,36 +1,61 @@
 class BinaryTree():
-	def __int__(self, rootid):
-		self.root = rootid
-		self.leftChild = None
-		self.rightChild = None
+    def __int__(self, rootid):
+        self.root = rootid
+        self.leftChild = None
+        self.rightChild = None
 
-	def insertLeft(self, newnode):
-		if self.leftChild == None:
-			self.leftChild = BinaryTree(self, newnode)
-		else:
-			t = BinaryTree(newnode)
-			t.leftChild = self.leftChild
-			self.leftChild = t
+    def insertLeft(self, newnode):
+        if isinstance (newnode, BinaryTree):
+            t = newnode
+        else:
+            t = BinaryTree(newnode)
+        if self.leftChild is not None:
+            t.leftChild == self.leftChild
+        
+        self.leftChild = t
 
-	def insertRight(self, newnode):
-		if self.rightChild == None:
-			self.rightChild = BinaryTree(newnode)
-		else:
-			t = BinaryTree(newnode)
-			t.rightChild = self.rightChild
-			self.rightChild = t
+    def insertRight(self, newnode):
+        if isinstance (newnode, BinaryTree):
+            t = newnode
+        else:
+            t = BinaryTree(newnode)
+        if self.rightChild is not None:
+            t.rightChild == self.rightChild
+        
+        self.rightChild = t
 
-	def getLeftChild(self):
-		return self.leftChild
+    def getLeftChild(self):
+        return self.leftChild
 
-	def getRightChild(self):
-		return self.rightChild
+    def getRightChild(self):
+        return self.rightChild
 
-	def setRootValue(self, rootVal):
-		self.root = rootVal
+    def setRootVal(self, rootVal):
+        self.root = rootVal
 
-	def getRootValue(self):
-		return self.root
+    def getRootVal(self):
+        return self.root
+
+    def inorder(self):
+        if self.leftChild:
+            self.leftChild.inorder()
+        print(self.root)
+        if self.rightChild:
+            self.rightChild.inorder()
+
+    def postorder(self):
+        if self.leftChild:
+            self.leftChild.postorder()
+        if self.rightChild:
+            self.rightChild.postorder()
+        print(self.root)
+
+    def preorder(self):
+        print(self.root)
+        if self.leftChild:
+            self.leftChild.preorder()
+        if self.rightChild:
+            self.rightChild.preorder()
 
 def buildTree():
     r = BinaryTree('a')		
