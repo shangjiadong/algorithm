@@ -35,4 +35,60 @@ class Solution(object):
         if not root.left and not root.right: return [str(root.val)]
         return [str(root.val) + '->' + i for i in self.binaryTreePaths(root.left)] + \
             [str(root.val) + '->' + i for i in self.binaryTreePaths(root.right)]
-    
+
+def stringToTreeNode(input):
+    input = input.strip()
+    input = input[1:-1]
+    if not input:
+        return None
+
+    inputValues = [s.strip() for s in input.split(',')]
+    root = TreeNode(int(inputValues[0]))
+    nodeQueue = [root]
+    front = 0
+    index = 1
+    while index < len(inputValues):
+        node = nodeQueue[front]
+        front = front + 1
+
+        item = inputValues[index]
+        index = index + 1
+        if item != "null":
+            leftNumber = int(item)
+            node.left = TreeNode(leftNumber)
+            nodeQueue.append(node.left)
+
+        if index >= len(inputValues):
+            break
+
+        item = inputValues[index]
+        index = index + 1
+        if item != "null":
+            rightNumber = int(item)
+            node.right = TreeNode(rightNumber)
+            nodeQueue.append(node.right)
+    return root
+
+def stringArrayToString(input):
+    return json.dumps(input)
+
+def main():
+    import sys
+    def readlines():
+        for line in sys.stdin:
+            yield line.strip('\n')
+    lines = readlines()
+    while True:
+        try:
+            line = lines.next()
+            root = stringToTreeNode(line)
+            
+            ret = Solution().binaryTreePaths(root)
+
+            out = stringArrayToString(ret)
+            print out
+        except StopIteration:
+            break
+
+if __name__ == '__main__':
+    main()
