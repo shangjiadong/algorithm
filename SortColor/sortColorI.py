@@ -19,12 +19,12 @@ class Solution(object):
         alist[start] = alist[right]
         alist[right] = pivot
         return right
+		
     def quickSort(self, alist, start, end):
         if start < end:
             split = self.partition(alist, start, end)
             self.quickSort(alist, start, split-1)
             self.quickSort(alist, split+1, end)
-        
         
     def sortColors(self, nums):
         from collections import defaultdict

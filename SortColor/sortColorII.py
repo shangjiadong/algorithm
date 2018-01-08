@@ -38,9 +38,7 @@ def main():
         try:
             line = lines.next()
             nums = stringToIntegerList(line)
-            
             ret = Solution().sortColors(nums)
-
             out = integerListToString(nums)
             if ret is not None:
                 print "Do not return anything, modify nums in-place instead."
