@@ -7,7 +7,6 @@ Given an array A of n numbers, a query x, and a number k,
    find([4,1,3,2,7,4], 6.5, 3)  returns   [4,7,4]
    find([5,3,4,1,6,3], 3.5, 2)  returns   [3,4]
 
-
    Filename: closest_unsorted.py
    Must run in O(n) time. 
    The elements in the returned list must be in the original order.
@@ -47,6 +46,7 @@ def main():
     print(find([4,1,3,2,7,4], 5.2, 2))
     print(find([4,1,3,2,7,4], 6.5, 3))
     print(find([5,3,4,1,6,3], 3.5, 2))
+	print(find([5,3,4,1,6,3], 4.5, 2))
     
 if __name__=="__main__":
     main()
